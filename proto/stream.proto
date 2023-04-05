@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/streamingfast/substreams-sink-burster-proxy/proto";
+
+import "sf/substreams/v1/substreams.proto";
+
+service Stream {
+  rpc StreamBuffer(Request) returns (stream sf.substreams.v1.BlockScopedData) {}
+}
+
+
+message Request {
+  uint64 burst = 1;
+}
